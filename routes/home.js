@@ -26,4 +26,25 @@ router.post("/", jsonParser, function (req, res, next) {
   res.end();
 });
 
+router.delete("/", jsonParser, function (req, res, next) {
+  let rawdata = fs.readFileSync(
+    path.resolve(__dirname, "../data/introductionArray.json")
+  );
+
+  let array = JSON.parse(rawdata);
+
+  console.log(req.body.deletedText);
+  let newArray = array.filter(function (text) {
+    if (text != req.body.deletedText) {
+      return true;
+    }
+  });
+
+  fs.writeFileSync(
+    path.resolve(__dirname, "../data/introductionArray.json"),
+    JSON.stringify(newArray)
+  );
+  res.end();
+});
+
 module.exports = router;
