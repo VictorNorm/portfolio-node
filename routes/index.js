@@ -9,7 +9,7 @@ router.get("/", function (req, res, next) {
     path.resolve(__dirname, "../data/recommendations.json")
   );
   let cakes = fs.readFileSync(
-    path.resolve(__dirname, "../data/img/portfolio.json")
+    path.resolve(__dirname, "../data/portfolio.json")
   );
   res.render("index", { data: JSON.parse(data), cakes: JSON.parse(cakes) });
 });
