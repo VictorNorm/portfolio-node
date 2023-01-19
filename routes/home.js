@@ -34,6 +34,7 @@ router.delete("/", jsonParser, function (req, res, next) {
   let array = JSON.parse(rawdata);
 
   console.log(req.body.deletedText);
+
   let newArray = array.filter(function (text) {
     if (text != req.body.deletedText) {
       return true;
