@@ -8,7 +8,10 @@ router.get("/", function (req, res, next) {
   let data = fs.readFileSync(
     path.resolve(__dirname, "../data/recommendations.json")
   );
-  res.render("index", { data: JSON.parse(data) });
+  let cakes = fs.readFileSync(
+    path.resolve(__dirname, "../data/img/portfolio.json")
+  );
+  res.render("index", { data: JSON.parse(data), cakes: JSON.parse(cakes) });
 });
 
 module.exports = router;
